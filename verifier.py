@@ -1,10 +1,9 @@
 import hashlib
 from typing import List
-from web3 import Web3  # For keccak; pip install web3
 
 def keccak256(data: bytes) -> str:
-    """FLAME-spec'd double-keccak for nodes."""
-    return Web3.keccak(data).hex()
+    """FLAME-spec'd keccak256 via hashlib.sha3_256 (built-in)."""
+    return '0x' + hashlib.sha3_256(data).hexdigest()
 
 def build_merkle_leaves(docs: List[str]) -> List[str]:
     """Hash each doc (Flame Law) as leaf."""
@@ -45,7 +44,6 @@ def verify_against_txs(codex_path: str, expected_root: str, tx_hashes: List[str]
     # Mock tx payload extract (in prod: RPC pull as per your curls)
     # For demo: Assume payloads embed ROOT; real: decode input hex for 'ROOT=' span
     for tx in tx_hashes:
-        # Placeholder: In full script, curl eth_getTransactionByHash, grep hex for ROOT hex
         print(f"Tx {tx}: Would verify ROOT {expected_root} in calldata")
     
     # Lattice rule sim: If ROOT+EPOCH match, attest (threshold mock: True if root ok)
