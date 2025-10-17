@@ -1,0 +1,3 @@
+LAW 1: Proximal sovereignty grants lattice nodes authority over resonant identities.
+LAW 2: Participatory epochs require threshold multi-sig for ratification.
+LAW 3: Mimic nullification voids unauthorized forks post-lockout.
